@@ -1,0 +1,101 @@
+﻿@model ToDoCore.Business.Dto.ToDoDto
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2><span class="text-info">Edit ToDo Item</span></h2>
+<div class="container">
+    <form id="frmToDo">
+        <input id="todoId" type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="CreateDate" value="@Model.CreateDate" />
+        <div class="form-group">
+            <label for="Subject">Subject</label>
+            <input type="text" class="form-control" name="Subject" placeholder="Subject" value="@Model.Subject" />
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <textarea class="form-control" name="Description" placeholder="Description" rows="5" id="comment">@Model.Description</textarea>
+        </div>
+    </form>
+
+    <label for="Description">Task Items</label>
+    <a href="#" data-todoid="@Model.Id" class="btn btn-xs btn-success taskModalPopup"><span class="glyphicon glyphicon-plus"></span></a>
+
+    @if (Model.TaskDtos != null)
+    {
+        foreach (var taskItem in Model.TaskDtos)
+        {
+            <div class="form-group bg-success">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <h3>@taskItem.Subject</h3>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a href="#" data-todoid="@Model.Id" data-taskid="@taskItem.Id" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                                        <a href="#" data-todoid="@Model.Id" data-taskid="@taskItem.Id" class="btn btn-xs btn-warning taskModalPopup"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>@taskItem.Description</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="padding-left:20px;" for="Description">Remind Items</label>
+                        <a href="#" data-taskid="@taskItem.Id" class="btn btn-xs btn-success reminderModalPopup"><span class="glyphicon glyphicon-plus"></span></a>
+                        <div class="row" style="padding-left:20px; padding-right:20px;">
+                            @if (taskItem.ReminderDtos != null)
+                            {
+                                if (taskItem.ReminderDtos.Count > 0)
+                                {
+                                    foreach (var remindItem in taskItem.ReminderDtos)
+                                    {
+                                        <div class="col-md-3">
+
+                                            <div class="thumbnail">
+                                                <div class="caption">
+                                                    <p> @remindItem.RemindTo.ToShortDateString() </p>
+                                                    <p>@remindItem.Message</p>
+                                                </div>
+
+                                                <a href="#" data-reminderid="@remindItem.Id" data-taskid="@taskItem.Id" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                                                <a href="#" data-reminderid="@remindItem.Id" data-taskid="@taskItem.Id" class="btn btn-xs btn-warning reminderModalPopup"><span class="glyphicon glyphicon-pencil"></span></a>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="col-md-3" style="padding-left:20px;">
+                                        <p>(No Reminder)</p>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    }
+
+    <div class="row col-md-1 col-lg-offset-11">
+        <a class="btn btn-lg btn-success updateToDo" style="margin-top:20px;" href="#">
+            <span class="glyphicon glyphicon-floppy-disk"></span>
+        </a>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-dialog" style="width:350px; height:200px;">
+        <div class="modal-content" style="overflow: auto; padding:15px;">
+            <div style="height:10px;"> </div>
+            <div id="myModalContent" style="width:300px; height:150px; ">
+            </div>
+        </div>
+    </div>
+</div> 

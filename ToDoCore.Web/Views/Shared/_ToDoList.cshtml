@@ -1,0 +1,29 @@
+﻿@model IList<ToDoCore.Business.Dto.ToDoMainDto>
+@if (Model != null)
+{
+    foreach (ToDoCore.Business.Dto.ToDoMainDto todoItem in Model)
+    {
+        <div class="col-md-4" style="height:250px !important; display:grid;">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h3> @todoItem.Subject </h3>
+                </div>
+                <p>@todoItem.Description</p>
+
+                <div class="" style="padding-bottom:0px;">
+                    <div class="alert-danger">
+                        <span class="">@todoItem.CountTask</span>
+                        <span class="glyphicon glyphicon-flag">Task </span>
+                    </div>
+                    <div class="alert-danger">
+                        <span class="">@todoItem.CountReminder</span>
+                        <span class="glyphicon glyphicon-time">Reminder </span>
+                    </div>
+                    <br />
+                    <a id="btnDetail" class="btn btn-sm btn-primary" href="@Url.Action("Detail","ToDo",new { id = todoItem.Id })" role="button">Detail &raquo;</a>
+                    <a id="btnEdit" class="btn btn-sm btn-warning" href="@Url.Action("Edit","ToDo",new { id = todoItem.Id })" role="button">Edit &raquo;</a>
+                </div>
+            </div>
+        </div>
+    }
+}

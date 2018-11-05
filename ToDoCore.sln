@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoCore.Web", "ToDoCore.Web\ToDoCore.Web.csproj", "{10A4B41A-2245-4EE7-B5E4-F7A0CDB94BD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoCore.Web", "ToDoCore.Web\ToDoCore.Web.csproj", "{10A4B41A-2245-4EE7-B5E4-F7A0CDB94BD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoCore.Data", "ToDoCore.Data\ToDoCore.Data.csproj", "{37E89BDC-E33B-426E-9FEB-895C3AEA9419}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoCore.Business", "ToDoCore.Business\ToDoCore.Business.csproj", "{72B9B9F1-F36D-43A1-81C4-23B2D6A4FBC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{10A4B41A-2245-4EE7-B5E4-F7A0CDB94BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10A4B41A-2245-4EE7-B5E4-F7A0CDB94BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10A4B41A-2245-4EE7-B5E4-F7A0CDB94BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37E89BDC-E33B-426E-9FEB-895C3AEA9419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37E89BDC-E33B-426E-9FEB-895C3AEA9419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37E89BDC-E33B-426E-9FEB-895C3AEA9419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37E89BDC-E33B-426E-9FEB-895C3AEA9419}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B9B9F1-F36D-43A1-81C4-23B2D6A4FBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B9B9F1-F36D-43A1-81C4-23B2D6A4FBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B9B9F1-F36D-43A1-81C4-23B2D6A4FBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B9B9F1-F36D-43A1-81C4-23B2D6A4FBC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

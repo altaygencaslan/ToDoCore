@@ -1,0 +1,38 @@
+﻿@model ToDoCore.Business.Dto.ReminderDto
+<form id="frmReminder">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="TaskId" value="@Model.TaskId" />
+    <div class="col-md-12">
+        <h3 class="modal-title">Reminder</h3>
+        <div class="caption">
+            <input class="form-control" type="text" name="Message" placeholder="Message" value="@Model.Message" />
+        </div>
+        <p>
+            <input id="RemindTo" type="datetime" class="form-control" name="RemindTo" value="@Model.RemindTo.ToString("dd/MM/yyyy hh:mm")" />
+        </p>
+
+        <a class="btn btn-success btnSaveReminder" href="#">Save</a>
+    </div>
+</form>
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/lib/jquery/dist/jquery.mask.min.js"></script>
+<script>
+    $('#RemindTo').mask("99/99/9999 99:99", { placeholder: 'DD/MM/YYYY HH:MM' });
+
+    $(".btnSaveReminder").on("click", function (e) {
+        var serializeItem = $('#frmReminder').serialize();
+        $.ajax({
+            url: '/ToDo/SaveReminder',
+            type: 'POST',
+            content: 'application/json;',
+            dataType: 'json',
+            data: serializeItem,
+            success: function (data) {
+                window.location.reload();
+            }
+        });
+    });
+</script>

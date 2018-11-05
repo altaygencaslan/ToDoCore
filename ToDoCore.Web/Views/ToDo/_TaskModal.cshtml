@@ -1,0 +1,32 @@
+﻿@model ToDoCore.Business.Dto.TaskDto
+<form id="frmTask">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="ToDoId" value="@Model.ToDoId" />
+    <div class="col-md-12">
+        <h3 class="modal-title">Task</h3>
+        <div class="caption">
+            <input class="form-control" type="text" name="Subject" placeholder="Subject" value="@Model.Subject" />
+        </div>
+        <p>
+            <textarea class="form-control" name="Description" placeholder="Description" rows="5" id="comment">@Model.Description</textarea>
+        </p>
+
+        <a class="btn btn-success btnSaveTask" href="#">Save</a>
+    </div>
+</form>
+
+<script>
+    $(".btnSaveTask").on("click", function (e) {
+        var serializeItem = $('#frmTask').serialize();
+        $.ajax({
+            url: '/ToDo/SaveTask',
+            type: 'POST',
+            content: 'application/json;',
+            dataType: 'json',
+            data: serializeItem,
+            success: function (data) {
+                window.location.reload();
+            }
+        });
+    });
+</script>

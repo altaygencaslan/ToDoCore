@@ -1,0 +1,69 @@
+﻿@model ToDoCore.Business.Dto.ToDoDto
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-11">
+            <h1>@Model.Subject</h1>
+        </div>
+        <div class="col-md-1">
+            <a class="btn btn-lg btn-warning" style="margin-top:20px;" href="@Url.Action("Edit", "ToDo", new { id = Model.Id })">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <p>@Model.Description</p>
+    </div>
+    <label for="Description">Task Items</label>
+    @if (Model.TaskDtos != null)
+    {
+        foreach (var taskItem in Model.TaskDtos)
+        {
+            <div class="form-group bg-success">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3>@taskItem.Subject</h3>
+                            </div>
+                            <p>@taskItem.Description</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Description" style="padding-left:20px;">Remind Items</label>
+                        <div class="row" style="padding-left:20px; padding-right:20px;">
+                            @if (taskItem.ReminderDtos != null)
+                            {
+                                if (taskItem.ReminderDtos.Count > 0)
+                                {
+                                    foreach (var remindItem in taskItem.ReminderDtos)
+                                    {
+                                        <div class="col-md-3">
+                                            <div class="thumbnail">
+                                                <div class="caption">
+                                                    <p> @remindItem.RemindTo.ToShortDateString() </p>
+                                                    <p>@remindItem.Message</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="col-md-3" style="padding-left:20px;">
+                                        <p>(No Reminder)</p>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    }
+</div>
